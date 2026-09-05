@@ -1,3 +1,4 @@
+import os
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 import joblib
@@ -22,6 +23,7 @@ def train_and_evaluate(csv_path, model_output_path):
     print(classification_report(y_test, y_pred))
 
     # Save the trained model
+    os.makedirs(os.path.dirname(model_output_path), exist_ok=True)
     joblib.dump(model, model_output_path)
     print(f"Model saved to {model_output_path}")
 
